@@ -79,7 +79,7 @@ export function DocumentUploader() {
         <CardContent className="pt-6">
           <FileUploader
             onFileChange={handleFileChange}
-            acceptedFileTypes=".pdf,.docx,.txt"
+            acceptedFileTypes=".docx,.txt"
             isProcessing={isProcessing}
           />
           {file && (

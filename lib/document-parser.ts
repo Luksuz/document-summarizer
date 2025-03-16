@@ -1,16 +1,22 @@
-import { extractTextFromPdf } from "./pdf-extractor"
-
 export async function extractTextFromFile(file: File): Promise<string> {
-  const fileType = file.name.split(".").pop()?.toLowerCase()
-
-  if (fileType === "pdf") {
-    return extractTextFromPdf(file)
-  } else if (fileType === "docx") {
-    return extractTextFromDocx(file)
-  } else if (fileType === "txt") {
-    return extractTextFromTxt(file)
-  } else {
-    throw new Error("Unsupported file format. Please upload a PDF, DOCX, or TXT file.")
+  const fileType = file.name.split('.').pop()?.toLowerCase();
+  
+  if (!fileType) {
+    throw new Error('Unable to determine file type');
+  }
+  
+  try {
+    switch (fileType) {
+      case 'txt':
+        return await extractTextFromTxt(file);
+      case 'docx':
+        return await extractTextFromDocx(file);
+      default:
+        throw new Error(`Unsupported file type: ${fileType}. Only TXT and DOCX files are supported.`);
+    }
+  } catch (error) {
+    console.error(`Error extracting text from ${fileType} file:`, error);
+    throw error;
   }
 }
 

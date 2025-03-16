@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { PdfInitializer } from "@/components/pdf-initializer"
 
 export const metadata: Metadata = {
   title: 'v0 App',
@@ -16,7 +15,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <PdfInitializer />
         {children}
       </body>
     </html>

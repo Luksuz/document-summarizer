@@ -92,7 +92,7 @@ export function FileUploader({ onFileChange, acceptedFileTypes, isProcessing = f
                 Browse Files
               </Button>
             </div>
-            <p className="text-xs text-muted-foreground">Supported formats: PDF, DOCX, TXT</p>
+            <p className="text-xs text-muted-foreground">Supported formats: DOCX, TXT</p>
           </div>
         </div>
       ) : (
